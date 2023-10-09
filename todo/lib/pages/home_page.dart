@@ -68,14 +68,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 8, 31, 70),
+      backgroundColor: Color.fromARGB(255, 35, 35, 36),
       appBar: AppBar(
         title: Text("Lista de tarefas"),
+        backgroundColor: const Color.fromARGB(255, 118, 127, 141),
         elevation: 0,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createNewTask,
         child: Icon(Icons.add),
+        backgroundColor: Color.fromARGB(255, 30, 78, 160),
       ),
       body: ListView.builder(
           itemCount: db.toDoList.length,
@@ -84,7 +86,8 @@ class _HomePageState extends State<HomePage> {
               taskName: db.toDoList[index][0],
               taskCompleted: db.toDoList[index][1],
               onChanged: (value) => checkBoxChanged(value, index),
-              deleteFunction: (context) => deleteTask(index),
+              onDelete: () => deleteTask(index),
+              onCheck: (status) => checkBoxChanged(true, index),
             );
           }),
     );
