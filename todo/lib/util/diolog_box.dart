@@ -6,37 +6,61 @@ class DialogBox extends StatelessWidget {
   VoidCallback onSave;
   VoidCallback onCancel;
 
-
   DialogBox({
-    super.key, 
+    Key? key,
     required this.controller,
     required this.onSave,
     required this.onCancel,
-    });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      backgroundColor: Colors.blueAccent,
-      content: Container(
-        height: 120,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            TextField(
-              controller: controller,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), hintText: "Adicionar"),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                MyButton(text: "Salvar", onPressed: onSave),
-                const SizedBox(width: 8),
-                MyButton(text: "Cancelar", onPressed: onCancel)
-              ],
-            )
-          ],
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12.0), // Borda mais arredondada
+      child: AlertDialog(
+        backgroundColor: const Color.fromARGB(255, 138, 144, 153),
+        content: Container(
+          height: 120,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              TextField(
+                controller: controller,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "Adicionar",
+                  filled: true,
+                  fillColor: Color.fromARGB(255, 216, 214, 214),
+                  contentPadding: EdgeInsets.all(10),
+                  hintStyle: TextStyle(color: Colors.grey),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.blue),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MyButton(
+                    text: "Salvar",
+                    onPressed: onSave,
+                    buttonColor: Colors.green.shade500,
+                    textColor: Colors.white,
+                    textStyle: TextStyle(fontSize: 16),
+                  ),
+                  const SizedBox(width: 45),
+                  MyButton(
+                    text: "Cancelar",
+                    onPressed: onCancel,
+                    buttonColor: Colors.red.shade500,
+                    textColor: Colors.white,
+                    textStyle: TextStyle(fontSize: 16),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -7,8 +7,8 @@ class ToDoDataBase {
 
   void createInitialData() {
     toDoList = [
-      ["Teste", false],
-      ["Teste 2", false],
+      ["Deslize para os lados <-> ", false],
+      ["Clique no + para Salvar", false],
     ];
   }
 

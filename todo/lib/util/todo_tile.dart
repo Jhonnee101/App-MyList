@@ -65,8 +65,8 @@ class ToDoTile extends StatelessWidget {
                       ? TextDecoration.lineThrough
                       : TextDecoration.none,
                   decorationColor: taskCompleted
-                      ? Colors
-                          .black // Defina a cor da linha quando taskCompleted for verdadeiro
+                      ? const Color.fromARGB(255, 87, 14,
+                          8) // Defina a cor da linha quando taskCompleted for verdadeiro
                       : null,
                   decorationThickness:
                       3.0, // Ou defina como null para usar a cor padrão do TextDecoration.lineThrough

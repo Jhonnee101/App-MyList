@@ -70,26 +70,46 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 35, 35, 36),
       appBar: AppBar(
-        title: Text("Lista de tarefas"),
+        title: Center(
+          child: Text(
+            "Lista de tarefas",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+        ),
         backgroundColor: const Color.fromARGB(255, 118, 127, 141),
         elevation: 0,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createNewTask,
         child: Icon(Icons.add),
-        backgroundColor: Color.fromARGB(255, 30, 78, 160),
+        backgroundColor: Color.fromARGB(255, 162, 165, 168),
       ),
-      body: ListView.builder(
-          itemCount: db.toDoList.length,
-          itemBuilder: (context, index) {
-            return ToDoTile(
-              taskName: db.toDoList[index][0],
-              taskCompleted: db.toDoList[index][1],
-              onChanged: (value) => checkBoxChanged(value, index),
-              onDelete: () => deleteTask(index),
-              onCheck: (status) => checkBoxChanged(true, index),
-            );
-          }),
+      body: db.toDoList.isEmpty
+          ? Center(
+              child: Text(
+                "Sua lista está vazia!",
+                style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.white,
+                ),
+              ),
+            )
+          : ListView.builder(
+              itemCount: db.toDoList.length,
+              itemBuilder: (context, index) {
+                return ToDoTile(
+                  taskName: db.toDoList[index][0],
+                  taskCompleted: db.toDoList[index][1],
+                  onChanged: (value) => checkBoxChanged(value, index),
+                  onDelete: () => deleteTask(index),
+                  onCheck: (status) => checkBoxChanged(true, index),
+                );
+              },
+            ),
     );
   }
 }
