@@ -55,21 +55,23 @@ class ToDoTile extends StatelessWidget {
           child: Row(
             children: [
               //Nome da tarefa
-              Text(
-                taskName,
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  decoration: taskCompleted
-                      ? TextDecoration.lineThrough
-                      : TextDecoration.none,
-                  decorationColor: taskCompleted
-                      ? const Color.fromARGB(255, 87, 14,
-                          8) // Defina a cor da linha quando taskCompleted for verdadeiro
-                      : null,
-                  decorationThickness:
-                      3.0, // Ou defina como null para usar a cor padrão do TextDecoration.lineThrough
+              Expanded(
+                child: Text(
+                  taskName,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    decoration: taskCompleted
+                        ? TextDecoration.lineThrough
+                        : TextDecoration.none,
+                    decorationColor: taskCompleted
+                        ? const Color.fromARGB(255, 87, 14,
+                            8) // Defina a cor da linha quando taskCompleted for verdadeiro
+                        : null,
+                    decorationThickness:
+                        3.0, // Ou defina como null para usar a cor padrão do TextDecoration.lineThrough
+                  ),
                 ),
               ),
             ],
