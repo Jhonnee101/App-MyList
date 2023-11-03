@@ -1,20 +1,21 @@
-import "package:flutter/material.dart";
-import "package:hive_flutter/hive_flutter.dart";
-import "package:todo/data/database.dart";
-import "package:todo/util/diolog_box.dart";
-import "package:todo/util/todo_tile.dart";
+import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:todo/data/database.dart';
+import 'package:todo/util/diolog_box.dart';
+import 'package:todo/util/todo_tile.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   final _myBox = Hive.box("mybox");
-
   ToDoDataBase db = ToDoDataBase();
+  final _controller = TextEditingController();
 
   @override
   void initState() {
@@ -23,11 +24,8 @@ class _HomePageState extends State<HomePage> {
     } else {
       db.loadData();
     }
-
     super.initState();
   }
-
-  final _controller = TextEditingController();
 
   void checkBoxChanged(bool? value, int index) {
     setState(() {
@@ -49,7 +47,7 @@ class _HomePageState extends State<HomePage> {
     showDialog(
       context: context,
       builder: (context) {
-        return DialogBox(
+        return DynamicAlertDialog(
           controller: _controller,
           onSave: saveNewTask,
           onCancel: () => Navigator.of(context).pop(),
@@ -72,7 +70,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Center(
           child: Text(
-            "Lista de tarefas",
+            "Listas",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -83,10 +81,42 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: const Color.fromARGB(255, 118, 127, 141),
         elevation: 0,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: createNewTask,
-        child: Icon(Icons.add),
-        backgroundColor: Color.fromARGB(255, 162, 165, 168),
+      bottomNavigationBar: Container(
+        color: Colors.black,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 12),
+          child: GNav(
+            backgroundColor: Colors.black,
+            color: Colors.white,
+            activeColor: Colors.white,
+            tabBackgroundColor: Colors.grey.shade700,
+            gap: 8,
+            padding: EdgeInsets.all(16),
+            onTabChange: (index) {
+              if (index == 3) {
+                createNewTask();
+              }
+            },
+            tabs: const [
+              GButton(
+                icon: Icons.shopping_cart,
+                text: 'Mercado',
+              ),
+              GButton(
+                icon: Icons.medical_services,
+                text: 'Farmácia',
+              ),
+              GButton(
+                icon: Icons.list,
+                text: 'Atividades',
+              ),
+              GButton(
+                icon: Icons.add, // Adicione o ícone usando a propriedade "icon"
+                text: 'Adicionar',
+              ),
+            ],
+          ),
+        ),
       ),
       body: db.toDoList.isEmpty
           ? Center(

@@ -23,7 +23,8 @@ class MyButton extends StatelessWidget {
       color: buttonColor ?? Theme.of(context).primaryColor,
       textColor: textColor ?? Colors.white,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0), // Ajuste o valor conforme necessário
+        borderRadius:
+            BorderRadius.circular(12.0), // Ajuste o valor conforme necessário
       ),
       child: Text(
         text,
