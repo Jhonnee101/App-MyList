@@ -77,7 +77,7 @@ class _MercadoPageState extends State<MercadoPage> {
             ),
           ),
         ),
-        backgroundColor: Colors.grey.shade700,
+        backgroundColor: Colors.blue.shade600,
         elevation: 0,
       ),
       floatingActionButton: ElevatedButton(
@@ -86,7 +86,6 @@ class _MercadoPageState extends State<MercadoPage> {
         style: ElevatedButton.styleFrom(
             shape: CircleBorder(),
             padding: EdgeInsets.all(15),
-            primary: Colors.grey.shade700,
             shadowColor: Colors.yellow.shade700),
       ),
       body: db.toDoList.isEmpty

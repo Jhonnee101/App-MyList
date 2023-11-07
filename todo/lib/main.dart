@@ -23,7 +23,7 @@ class Myapp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
-      theme: ThemeData(primarySwatch: Colors.grey),
+      theme: ThemeData(primaryColor: Colors.red),
     );
   }
 }

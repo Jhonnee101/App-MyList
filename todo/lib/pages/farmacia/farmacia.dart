@@ -79,7 +79,7 @@ class _FarmaciaPageState extends State<FarmaciaPage> {
             ),
           ),
         ),
-        backgroundColor: Colors.grey.shade700,
+        backgroundColor: Colors.blue.shade600,
         elevation: 0,
       ),
       floatingActionButton: ElevatedButton(
@@ -88,7 +88,6 @@ class _FarmaciaPageState extends State<FarmaciaPage> {
         style: ElevatedButton.styleFrom(
             shape: CircleBorder(),
             padding: EdgeInsets.all(15),
-            primary: Colors.grey.shade700,
             shadowColor: Colors.yellow.shade700),
       ),
       body: db.toDoList.isEmpty

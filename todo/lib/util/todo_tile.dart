@@ -20,7 +20,7 @@ class ToDoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 15),
+      padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 15),
       child: Slidable(
         startActionPane: ActionPane(
           motion: StretchMotion(),
@@ -69,7 +69,7 @@ class ToDoTile extends StatelessWidget {
                             7) // Defina a cor da linha quando taskCompleted for verdadeiro
                         : null,
                     decorationThickness:
-                        3.0, // Ou defina como null para usar a cor padrão do TextDecoration.lineThrough
+                        5.0, // Ou defina como null para usar a cor padrão do TextDecoration.lineThrough
                   ),
                 ),
               ),

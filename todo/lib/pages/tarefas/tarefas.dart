@@ -77,7 +77,7 @@ class _TarefasPageState extends State<TarefasPage> {
             ),
           ),
         ),
-        backgroundColor: Colors.grey.shade700,
+        backgroundColor: Colors.blue.shade600,
         elevation: 0,
       ),
       floatingActionButton: ElevatedButton(
@@ -86,8 +86,7 @@ class _TarefasPageState extends State<TarefasPage> {
         style: ElevatedButton.styleFrom(
             shape: CircleBorder(),
             padding: EdgeInsets.all(15),
-            primary: Colors.grey.shade700,
-            shadowColor: Colors.yellow.shade700),
+            shadowColor: const Color.fromARGB(255, 210, 77, 25)),
       ),
       body: db.toDoList.isEmpty
           ? Center(
