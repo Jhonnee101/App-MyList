@@ -28,7 +28,7 @@ class ToDoTile extends StatelessWidget {
             SlidableAction(
               onPressed: (_) => onCheck(!taskCompleted),
               icon: Icons.check,
-              backgroundColor: Colors.green.shade300,
+              backgroundColor: Colors.green.shade500,
               foregroundColor: Colors.white,
               borderRadius: BorderRadius.circular(12),
             ),
@@ -40,7 +40,7 @@ class ToDoTile extends StatelessWidget {
             SlidableAction(
               onPressed: (_) => onDelete(),
               icon: Icons.delete,
-              backgroundColor: Colors.red.shade300,
+              backgroundColor: Colors.red.shade500,
               foregroundColor: Colors.white,
               borderRadius: BorderRadius.circular(12),
             ),
@@ -49,25 +49,24 @@ class ToDoTile extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(18),
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 118, 131, 138),
-            borderRadius: BorderRadius.circular(8),
+            color: Colors.blue.shade800,
+            borderRadius: BorderRadius.circular(12),
           ),
           child: Row(
             children: [
-              //Nome da tarefa
               Expanded(
                 child: Text(
                   taskName,
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: const Color.fromARGB(255, 234, 232, 232),
                     decoration: taskCompleted
                         ? TextDecoration.lineThrough
                         : TextDecoration.none,
                     decorationColor: taskCompleted
-                        ? const Color.fromARGB(255, 87, 14,
-                            8) // Defina a cor da linha quando taskCompleted for verdadeiro
+                        ? Color.fromARGB(255, 63, 12,
+                            7) // Defina a cor da linha quando taskCompleted for verdadeiro
                         : null,
                     decorationThickness:
                         3.0, // Ou defina como null para usar a cor padrão do TextDecoration.lineThrough

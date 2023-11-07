@@ -3,21 +3,20 @@ import 'package:hive_flutter/hive_flutter.dart';
 class ToDoDataBase {
   List toDoList = [];
 
-
-  final _myBox = Hive.box("mybox");
+  final _farmaciaBox = Hive.box("Farmacia");
 
   void createInitialData() {
     toDoList = [
       ["Deslize para os lados <-> ", false],
-      ["Clique no + para Salvar", false],
+      ["Clique no + para Adicionar", false],
     ];
   }
 
   void loadData() {
-    toDoList = _myBox.get("TODOLIST");
+    toDoList = _farmaciaBox.get("TODOLIST");
   }
 
   void updateDataBase() {
-    _myBox.put("TODOLIST", toDoList);
+    _farmaciaBox.put("TODOLIST", toDoList);
   }
 }

@@ -15,7 +15,7 @@ class DynamicAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: const Color.fromARGB(255, 138, 144, 153),
+      backgroundColor: Color.fromARGB(255, 28, 27, 27),
       content: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -26,15 +26,17 @@ class DynamicAlertDialog extends StatelessWidget {
                   null, // Defina como null para permitir o crescimento dinâmico
               keyboardType: TextInputType.multiline,
               controller: controller,
+              style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: "Adicionar",
                 filled: true,
-                fillColor: Color.fromARGB(255, 216, 214, 214),
+                fillColor: Color.fromARGB(255, 95, 93, 93),
                 contentPadding: EdgeInsets.all(10),
-                hintStyle: TextStyle(color: Colors.grey),
+                hintStyle: TextStyle(color: Color.fromARGB(255, 214, 205, 205)),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blue),
+                  borderSide:
+                      BorderSide(color: Color.fromARGB(255, 170, 204, 232)),
                   borderRadius: BorderRadius.circular(12.0),
                 ),
               ),
@@ -45,7 +47,7 @@ class DynamicAlertDialog extends StatelessWidget {
                 MyButton(
                   text: "Salvar",
                   onPressed: onSave,
-                  buttonColor: Colors.green.shade500,
+                  buttonColor: Colors.green.shade600,
                   textColor: Colors.white,
                   textStyle: TextStyle(fontSize: 16),
                 ),
@@ -53,7 +55,7 @@ class DynamicAlertDialog extends StatelessWidget {
                 MyButton(
                   text: "Cancelar",
                   onPressed: onCancel,
-                  buttonColor: Colors.red.shade500,
+                  buttonColor: Colors.red.shade600,
                   textColor: Colors.white,
                   textStyle: TextStyle(fontSize: 16),
                 ),
@@ -61,6 +63,9 @@ class DynamicAlertDialog extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20.0),
       ),
     );
   }
