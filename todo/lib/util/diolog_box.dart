@@ -23,13 +23,13 @@ class DynamicAlertDialog extends StatelessWidget {
             TextFormField(
               minLines: 2,
               maxLines:
-                  null, // Defina como null para permitir o crescimento dinâmico
+                  null, 
               keyboardType: TextInputType.multiline,
               controller: controller,
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: "Adicionar",
+                labelText: 'Adicionar',
                 filled: true,
                 fillColor: Color.fromARGB(255, 95, 93, 93),
                 contentPadding: EdgeInsets.all(10),
