@@ -67,11 +67,11 @@ class _FarmaciaPageState extends State<FarmaciaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromRGBO(23, 24, 29, 1),
       appBar: AppBar(
         title: Center(
           child: Text(
-            "Farmácia",
+            "Farmácia 🩺",
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.bold,
@@ -79,16 +79,23 @@ class _FarmaciaPageState extends State<FarmaciaPage> {
             ),
           ),
         ),
-        backgroundColor: Colors.blue.shade600,
+        backgroundColor: const Color.fromRGBO(41, 44, 53, 1),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),
+          ),
+        ),
         elevation: 0,
       ),
       floatingActionButton: ElevatedButton(
         onPressed: createNewTask,
         child: Icon(Icons.add),
         style: ElevatedButton.styleFrom(
+            backgroundColor: const Color.fromRGBO(41, 44, 53, 1),
             shape: CircleBorder(),
             padding: EdgeInsets.all(15),
-            shadowColor: Colors.yellow.shade700),
+            shadowColor: Color.fromARGB(255, 128, 107, 89),
+            elevation: 4),
       ),
       body: db.toDoList.isEmpty
           ? Center(
@@ -96,7 +103,7 @@ class _FarmaciaPageState extends State<FarmaciaPage> {
                 "Sua lista está vazia!",
                 style: TextStyle(
                   fontSize: 25,
-                  color: Colors.white,
+                  color: const Color.fromRGBO(252, 217, 184, 1),
                 ),
               ),
             )

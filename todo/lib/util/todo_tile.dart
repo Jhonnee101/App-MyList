@@ -20,15 +20,18 @@ class ToDoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 15),
+      padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 15),
       child: Slidable(
         startActionPane: ActionPane(
           motion: StretchMotion(),
           children: [
             SlidableAction(
               onPressed: (_) => onCheck(!taskCompleted),
-              icon: Icons.check,
-              backgroundColor: Colors.green.shade500,
+              icon: taskCompleted ? Icons.undo : Icons.done_all,
+              label: taskCompleted ? 'Desmarcar' : 'Marcar',
+              backgroundColor: taskCompleted
+                  ? Color.fromRGBO(179, 93, 13, 1)
+                  : Colors.green.shade600,
               foregroundColor: Colors.white,
               borderRadius: BorderRadius.circular(12),
             ),
@@ -40,7 +43,8 @@ class ToDoTile extends StatelessWidget {
             SlidableAction(
               onPressed: (_) => onDelete(),
               icon: Icons.delete,
-              backgroundColor: Colors.red.shade500,
+              label: 'Deletar',
+              backgroundColor: Colors.red.shade600,
               foregroundColor: Colors.white,
               borderRadius: BorderRadius.circular(12),
             ),
@@ -49,7 +53,7 @@ class ToDoTile extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(18),
           decoration: BoxDecoration(
-            color: Colors.blue.shade800,
+            color: const Color.fromRGBO(224, 145, 69, 1),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Row(
@@ -58,18 +62,22 @@ class ToDoTile extends StatelessWidget {
                 child: Text(
                   taskName,
                   style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: const Color.fromARGB(255, 234, 232, 232),
+                    shadows: [
+                      Shadow(
+                        color: Colors.black.withOpacity(0.4),
+                        offset: Offset(0, 4),
+                        blurRadius: 10,
+                      ),
+                    ],
                     decoration: taskCompleted
                         ? TextDecoration.lineThrough
                         : TextDecoration.none,
-                    decorationColor: taskCompleted
-                        ? Color.fromARGB(255, 63, 12,
-                            7) // Defina a cor da linha quando taskCompleted for verdadeiro
-                        : null,
-                    decorationThickness:
-                        5.0, // Ou defina como null para usar a cor padrão do TextDecoration.lineThrough
+                    decorationColor:
+                        taskCompleted ? Color.fromARGB(255, 17, 3, 2) : null,
+                    decorationThickness: 4.0,
                   ),
                 ),
               ),

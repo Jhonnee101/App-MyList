@@ -4,10 +4,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo/pages/home_page.dart';
 
 void main() async {
-  // Inicia o hive
   await Hive.initFlutter();
 
-  // Abre as caixas do Hive (Mercado, Farmacia, Atividades)
+  
   var mercadoBox = await Hive.openBox("Mercado");
   var farmaciaBox = await Hive.openBox("Farmacia");
   var atividadesBox = await Hive.openBox("Atividades");
@@ -23,7 +22,6 @@ class Myapp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
-      theme: ThemeData(primaryColor: Colors.red),
     );
   }
 }

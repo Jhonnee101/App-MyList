@@ -15,15 +15,14 @@ class DynamicAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Color.fromARGB(255, 28, 27, 27),
+      backgroundColor: Color.fromRGBO(41, 44, 53, 1),
       content: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             TextFormField(
               minLines: 2,
-              maxLines:
-                  null, 
+              maxLines: null,
               keyboardType: TextInputType.multiline,
               controller: controller,
               style: TextStyle(color: Colors.white),
@@ -33,10 +32,9 @@ class DynamicAlertDialog extends StatelessWidget {
                 filled: true,
                 fillColor: Color.fromARGB(255, 95, 93, 93),
                 contentPadding: EdgeInsets.all(10),
-                hintStyle: TextStyle(color: Color.fromARGB(255, 214, 205, 205)),
+                labelStyle: TextStyle(color: Colors.white),
                 focusedBorder: OutlineInputBorder(
-                  borderSide:
-                      BorderSide(color: Color.fromARGB(255, 170, 204, 232)),
+                  borderSide: BorderSide(color: Colors.white),
                   borderRadius: BorderRadius.circular(12.0),
                 ),
               ),

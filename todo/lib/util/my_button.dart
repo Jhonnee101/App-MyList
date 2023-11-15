@@ -20,7 +20,7 @@ class MyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: onPressed,
-      color: buttonColor ?? Theme.of(context).primaryColor,
+      color: buttonColor ?? const Color.fromRGBO(224, 145, 69, 1),
       textColor: textColor ?? Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius:

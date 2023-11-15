@@ -32,21 +32,23 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: PageView(
         controller: pc,
-        children: [MercadoPage(), FarmaciaPage(), TarefasPage()],
+        children: [MercadoPage(), TarefasPage(), FarmaciaPage()],
         onPageChanged: setPaginaAtual,
       ),
       bottomNavigationBar: Container(
-        color: Colors.black,
+        color: const Color.fromRGBO(31, 34, 43, 1),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
           child: GNav(
             selectedIndex: paginaAtual,
-            backgroundColor: Colors.black,
-            color: Colors.white,
-            activeColor: const Color.fromARGB(255, 255, 255, 255),
-            tabBackgroundColor: Colors.blue.withOpacity(0.6),
+            backgroundColor: Color.fromRGBO(31, 34, 43, 1),
+            color: Color.fromRGBO(252, 217, 184, 1),
+            activeColor: Colors.white,
+            tabBackgroundColor: Color.fromRGBO(224, 145, 69, 1),
             tabShadow: [
-              BoxShadow(color: Colors.blue.withOpacity(0.2), blurRadius: 2)
+              BoxShadow(
+                  color: Color.fromRGBO(224, 145, 69, 1).withOpacity(0.2),
+                  blurRadius: 2)
             ],
             gap: 8,
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
@@ -70,12 +72,12 @@ class _HomePageState extends State<HomePage> {
                 text: 'Mercado',
               ),
               GButton(
-                icon: Icons.medical_services,
-                text: 'Farmácia',
-              ),
-              GButton(
                 icon: Icons.list,
                 text: 'Atividades',
+              ),
+              GButton(
+                icon: Icons.medical_services,
+                text: 'Farmácia',
               ),
             ],
           ),
