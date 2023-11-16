@@ -1,95 +1,88 @@
-import "package:flutter/material.dart";
-import "package:hive_flutter/hive_flutter.dart";
-import "package:todo/data/database.dart";
-import "package:todo/util/diolog_box.dart";
-import "package:todo/util/todo_tile.dart";
+import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:todo/pages/farmacia/farmacia.dart';
+import 'package:todo/pages/mercado/mercado.dart';
+import 'package:todo/pages/tarefas/tarefas.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final _myBox = Hive.box("mybox");
-
-  ToDoDataBase db = ToDoDataBase();
+  int paginaAtual = 0;
+  late PageController pc;
 
   @override
   void initState() {
-    if (_myBox.get("TODOLIST") == null) {
-      db.createInitialData();
-    } else {
-      db.loadData();
-    }
-
     super.initState();
+    pc = PageController(initialPage: paginaAtual);
   }
 
-  final _controller = TextEditingController();
-
-  void checkBoxChanged(bool? value, int index) {
+  setPaginaAtual(pagina) {
     setState(() {
-      db.toDoList[index][1] = !db.toDoList[index][1];
+      paginaAtual = pagina;
     });
-    db.updateDataBase();
-  }
-
-  void saveNewTask() {
-    setState(() {
-      db.toDoList.add([_controller.text, false]);
-      _controller.clear();
-    });
-    Navigator.of(context).pop();
-    db.updateDataBase();
-  }
-
-  void createNewTask() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return DialogBox(
-          controller: _controller,
-          onSave: saveNewTask,
-          onCancel: () => Navigator.of(context).pop(),
-        );
-      },
-    );
-  }
-
-  void deleteTask(int index) {
-    setState(() {
-      db.toDoList.removeAt(index);
-    });
-    db.updateDataBase();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 35, 35, 36),
-      appBar: AppBar(
-        title: Text("Lista de tarefas"),
-        backgroundColor: const Color.fromARGB(255, 118, 127, 141),
-        elevation: 0,
+      body: PageView(
+        controller: pc,
+        children: [MercadoPage(), TarefasPage(), FarmaciaPage()],
+        onPageChanged: setPaginaAtual,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: createNewTask,
-        child: Icon(Icons.add),
-        backgroundColor: Color.fromARGB(255, 30, 78, 160),
+      bottomNavigationBar: Container(
+        color: const Color.fromRGBO(31, 34, 43, 1),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
+          child: GNav(
+            selectedIndex: paginaAtual,
+            backgroundColor: Color.fromRGBO(31, 34, 43, 1),
+            color: Color.fromRGBO(252, 217, 184, 1),
+            activeColor: Colors.white,
+            tabBackgroundColor: Color.fromRGBO(224, 145, 69, 1),
+            tabShadow: [
+              BoxShadow(
+                  color: Color.fromRGBO(224, 145, 69, 1).withOpacity(0.2),
+                  blurRadius: 2)
+            ],
+            gap: 8,
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            onTabChange: (index) {
+              if (index == 0) {
+                pc.animateToPage(index,
+                    duration: Duration(milliseconds: 300), curve: Curves.ease);
+              }
+              if (index == 1) {
+                pc.animateToPage(index,
+                    duration: Duration(milliseconds: 300), curve: Curves.ease);
+              }
+              if (index == 2) {
+                pc.animateToPage(index,
+                    duration: Duration(milliseconds: 300), curve: Curves.ease);
+              }
+            },
+            tabs: const [
+              GButton(
+                icon: Icons.shopping_cart,
+                text: 'Mercado',
+              ),
+              GButton(
+                icon: Icons.list,
+                text: 'Atividades',
+              ),
+              GButton(
+                icon: Icons.medical_services,
+                text: 'Farmácia',
+              ),
+            ],
+          ),
+        ),
       ),
-      body: ListView.builder(
-          itemCount: db.toDoList.length,
-          itemBuilder: (context, index) {
-            return ToDoTile(
-              taskName: db.toDoList[index][0],
-              taskCompleted: db.toDoList[index][1],
-              onChanged: (value) => checkBoxChanged(value, index),
-              onDelete: () => deleteTask(index),
-              onCheck: (status) => checkBoxChanged(true, index),
-            );
-          }),
     );
   }
 }

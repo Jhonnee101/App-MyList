@@ -2,19 +2,34 @@ import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
   final String text;
-  VoidCallback onPressed;
+  final VoidCallback onPressed;
+  final Color? buttonColor;
+  final Color? textColor;
+  final TextStyle? textStyle;
+
   MyButton({
-    super.key, 
-    required this.text, 
+    Key? key,
+    required this.text,
     required this.onPressed,
-    });
+    this.buttonColor,
+    this.textColor,
+    this.textStyle,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialButton(
+    return MaterialButton(
       onPressed: onPressed,
-      color: Theme.of(context).primaryColor,
-      child: Text(text),
+      color: buttonColor ?? const Color.fromRGBO(224, 145, 69, 1),
+      textColor: textColor ?? Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius:
+            BorderRadius.circular(12.0), // Ajuste o valor conforme necessário
+      ),
+      child: Text(
+        text,
+        style: textStyle,
+      ),
     );
   }
 }
