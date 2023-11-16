@@ -6,9 +6,6 @@ App criado para te ajudar a se manter organizado e não esquecer de nada que voc
 ## :books: Funcionalidades
 * <b>Funcionalidade 1</b>: Este app tem uma diferença do demais do mercado, ele tem a funcionalidade de armazenamento local sem ser preciso o uso de internet para atualizar e sem o risco de você perder sua lista de compras e atividades justo quando você mais precisa.
 
-![giphy](https://github.com/Jhonnee101/My-List-app/assets/138957799/43eec1bd-becf-465e-9cf2-949eb5c3f4ff)
-*
-*
 ![Mercado](https://github.com/Jhonnee101/My-List-app/assets/138957799/5a07c880-899b-493a-a860-cba8d05208d0)
 *
 *
